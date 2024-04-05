@@ -48,7 +48,7 @@ namespace SpaceProjectBackend.Endpoints
           LoginDto loginPayload,
           UserManager<ApplicationUser> userManager,
           TokenService tokenService,
-          IRepository repository)
+          IAuthRepository repository)
         {
             if (loginPayload.Email == null) return TypedResults.BadRequest("Email is required.");
             if (loginPayload.Password == null) return TypedResults.BadRequest("Password is required.");

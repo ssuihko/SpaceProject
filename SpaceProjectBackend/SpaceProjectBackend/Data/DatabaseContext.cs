@@ -42,7 +42,17 @@ namespace SpaceProjectBackend.Data
                           Usernotes="famous AI from the movie",
                 });
 
-            //modelBuilder.Entity<ApplicationUser>().HasMany(e => e.BlogPosts).WithOne(e => e.ApplicationUser).HasForeignKey(e => e.ApplicationUserId);
+            modelBuilder.Entity<AI>().HasData(
+                new AI
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "David 8",
+                    Description = "A villain in the Alien series.",
+                    Real = false,
+                    CreatorId = null,
+                    Image = "img_url",
+                    Usernotes = "Religious symbolism",
+                });
 
             modelBuilder.Entity<Book>().HasData(
                 new Book  {

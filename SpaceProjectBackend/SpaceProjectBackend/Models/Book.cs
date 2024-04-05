@@ -19,8 +19,8 @@ namespace SpaceProjectBackend.Models
 
 
         [Column("author_id")]
-        public string AuthorId { get; set; }
-        public Person Author { get; set; }
+        public string? AuthorId { get; set; }
+        public Person? Author { get; set; }
 
 
         [Column("usernotes")]

@@ -2,7 +2,7 @@
 
 namespace SpaceProjectBackend.Repository
 {
-    public interface IRepository
+    public interface IAuthRepository
     {
         public ApplicationUser? GetUser(string email);
     }

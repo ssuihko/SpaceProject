@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  spaceprojectbackend:
+    image: ${DOCKER_REGISTRY-}spaceprojectbackend
+    build:
+      context: .
+      dockerfile: SpaceProjectBackend/Dockerfile

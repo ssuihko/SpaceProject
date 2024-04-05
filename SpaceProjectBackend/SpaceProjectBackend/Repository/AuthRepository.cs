@@ -3,11 +3,11 @@ using SpaceProjectBackend.Models;
 
 namespace SpaceProjectBackend.Repository
 {
-    public class Repository : IRepository
+    public class AuthRepository : IAuthRepository
     {
         private DatabaseContext _db;
 
-        public Repository(DatabaseContext db) 
+        public AuthRepository(DatabaseContext db) 
         {
             _db = db;
         }

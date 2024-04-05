@@ -485,3 +485,4 @@ exercise.wwwapi/Migrations
 
 /SpaceProjectBackend/appsettings.json
 /SpaceProjectBackend/appsettings.Development.json
+/SpaceProjectBackend/Migrations/

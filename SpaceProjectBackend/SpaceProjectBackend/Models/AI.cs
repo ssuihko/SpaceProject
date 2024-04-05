@@ -22,8 +22,8 @@ namespace SpaceProjectBackend.Models
 
 
         [Column("creator_id")]
-        public string CreatorId { get; set; }
-        public Person Creator { get; set; }
+        public string? CreatorId { get; set; }
+        public Person? Creator { get; set; }
 
 
         [Column("image")]
