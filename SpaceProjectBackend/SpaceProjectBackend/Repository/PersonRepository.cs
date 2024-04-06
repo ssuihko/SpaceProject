@@ -47,8 +47,9 @@ namespace SpaceProjectBackend.Repository
         }
 
         public async Task<Person?> CreatePerson(
-                string name, 
-                string image,  
+                string name,
+                string image,
+                bool real,
                 string profile)
         {
 
@@ -58,6 +59,7 @@ namespace SpaceProjectBackend.Repository
                 Id = Guid.NewGuid().ToString(), 
                 Name = name, 
                 Image = image, 
+                Real = real,
                 Profile = profile };
 
             await _db.People.AddAsync(Person);
@@ -66,8 +68,9 @@ namespace SpaceProjectBackend.Repository
 
         public async Task<Person?> UpdatePerson( 
                 string PersonId,  
-                string name, 
-                string image,  
+                string name,
+                string image,
+                bool real,
                 string profile)
         {
             var prs = await _db.People.FirstOrDefaultAsync(s => s.Id ==PersonId);
@@ -75,6 +78,11 @@ namespace SpaceProjectBackend.Repository
             if (prs == null)
             {
                 return null;
+            }
+
+            if (prs.Real != real)
+            {
+                prs.Real = real;
             }
 
             if (name != null || name != "") 

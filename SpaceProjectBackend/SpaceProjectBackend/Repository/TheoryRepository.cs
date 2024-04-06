@@ -47,16 +47,20 @@ namespace SpaceProjectBackend.Repository
 
         public async Task<Theory?> CreateTheory(
                 string name, 
-                string description,    
+                string description,
+                bool real,
+                string image,
                 string usernotes)
         {
 
-            if (name == "" || description == "" || usernotes == "" ) return null;
+            if (name == "" || description == "" || usernotes == "" || image == "") return null;
 
             var Theory = new Theory { 
                 Id = Guid.NewGuid().ToString(), 
                 Name = name, 
                 Description = description, 
+                Real = real,
+                Image = image,
                 Usernotes = usernotes };
 
             await _db.Theories.AddAsync(Theory);
@@ -66,7 +70,9 @@ namespace SpaceProjectBackend.Repository
         public async Task<Theory?> UpdateTheory( 
                 string TheoryId,  
                 string name, 
-                string description,    
+                string description,
+                bool real,
+                string image,
                 string usernotes)
         {
             var thr = await _db.Theories.FirstOrDefaultAsync(s => s.Id ==TheoryId);
@@ -74,6 +80,11 @@ namespace SpaceProjectBackend.Repository
             if (thr == null)
             {
                 return null;
+            }
+
+            if (thr.Real != real)
+            {
+                thr.Real = real;
             }
 
             if (name != null || name != "") 
@@ -84,6 +95,11 @@ namespace SpaceProjectBackend.Repository
             if (description != null || description != "") 
             { 
                 thr.Description = description; 
+            }
+
+            if (image != null || image != "")
+            {
+                thr.Image = image;
             }
 
             if (usernotes != null || usernotes != "") 

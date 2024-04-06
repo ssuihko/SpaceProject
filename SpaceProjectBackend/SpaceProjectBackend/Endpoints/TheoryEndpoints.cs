@@ -41,17 +41,17 @@ namespace SpaceProjectBackend.Endpoints
                 return Results.Unauthorized();
             }
             
-            if (payload.Name == "" || payload.Description == "" || payload.Usernotes == "")
+            if (payload.Name == "" || payload.Description == "" || payload.Usernotes == "" || payload.Image == "")
             {
                 return Results.BadRequest("Non-empty fields are required");
             }
 
-            if (payload.Name == null || payload.Usernotes == null || payload.Description == null )
+            if (payload.Name == null || payload.Usernotes == null || payload.Description == null || payload.Image == "")
             {
                 return Results.BadRequest("Non-null fields are required");
             }
 
-            Theory? Theory = await TheoryRepository.CreateTheory(payload.Name, payload.Description, payload.Usernotes);
+            Theory? Theory = await TheoryRepository.CreateTheory(payload.Name, payload.Description, payload.Real, payload.Image, payload.Usernotes);
 
             if (Theory == null)
             {
@@ -93,7 +93,7 @@ namespace SpaceProjectBackend.Endpoints
         {
 
          
-            if (payload.Name == null || payload.Usernotes == null || payload.Description == null)
+            if (payload.Name == null || payload.Usernotes == null || payload.Description == null || payload.Image == null)
             {
                 return Results.BadRequest("Non-null fields are required");
             }
@@ -110,11 +110,19 @@ namespace SpaceProjectBackend.Endpoints
 
             string newDescription = (payload.Description.Length > 0) ? payload.Description : ogTheory.Description;
 
-
             string newUsernotes = (payload.Usernotes.Length > 0) ? payload.Usernotes : ogTheory.Usernotes;
 
+            string newImage = (payload.Image.Length > 0) ? payload.Image : ogTheory.Image;
 
-            Theory? Theory = await repository.UpdateTheory(ogTheory.Id, newTitle, newDescription, newUsernotes);
+            bool newReal = ogTheory.Real;
+
+            if (payload.Real != null && newReal != payload.Real)
+            {
+                newReal = (bool)payload.Real;
+            }
+
+
+            Theory? Theory = await repository.UpdateTheory(ogTheory.Id, newTitle, newDescription, newReal, newImage, newUsernotes);
 
             if (Theory == null)
             {

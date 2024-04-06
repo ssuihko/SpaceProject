@@ -41,17 +41,17 @@ namespace SpaceProjectBackend.Endpoints
                 return Results.Unauthorized();
             }
             
-            if (payload.Title == "" || payload.Description == "" || payload.Usernotes == "")
+            if (payload.Title == "" || payload.Description == "" || payload.Usernotes == "" || payload.Image == "")
             {
                 return Results.BadRequest("Non-empty fields are required");
             }
 
-            if (payload.Title == null || payload.Usernotes == null || payload.Description == null )
+            if (payload.Title == null || payload.Usernotes == null || payload.Description == null || payload.Image == null || payload.Real == null)
             {
                 return Results.BadRequest("Non-null fields are required");
             }
 
-            Book? Book = await bookRepository.CreateBook(payload.Title, payload.Description, payload.AuthorId, payload.Usernotes);
+            Book? Book = await bookRepository.CreateBook(payload.Title, payload.Description, payload.Real, payload.Image, payload.AuthorId, payload.Usernotes);
 
             if (Book == null)
             {
@@ -109,12 +109,21 @@ namespace SpaceProjectBackend.Endpoints
 
             string newDescription = (payload.Description.Length > 0) ? payload.Description : ogBook.Description;
 
+            bool newReal = ogBook.Real;
+
+            if (payload.Real != null && newReal != payload.Real)
+            {
+                newReal = (bool)payload.Real;
+            }
+
             string newAuthorId = (payload.AuthorId.Length > 0) ? payload.AuthorId : ogBook.AuthorId;
 
             string newUsernotes = (payload.Usernotes.Length > 0) ? payload.Usernotes : ogBook.Usernotes;
 
+            string newImage = (payload.Image.Length > 0) ? payload.Image : ogBook.Image;
 
-            Book? Book = await repository.UpdateBook(ogBook.Id, newTitle, newDescription, newAuthorId, newUsernotes);
+
+            Book? Book = await repository.UpdateBook(ogBook.Id, newTitle, newDescription, newReal, newImage, newAuthorId, newUsernotes);
 
             if (Book == null)
             {

@@ -29,7 +29,9 @@ namespace SpaceProjectBackend.Data
                     Id = Guid.NewGuid().ToString(),
                     Name="N-body problem",
                     Description= "In physics, the n-body problem is the problem of predicting the individual motions of a group of celestial objects interacting with each other gravitationally. Solving this problem has been motivated by the desire to understand the motions of the Sun, Moon, planets, and visible stars. In the 20th century, understanding the dynamics of globular cluster star systems became an important n-body problem. The n-body problem in general relativity is considerably more difficult to solve due to additional factors like time and space distortions.",
-                    Usernotes="often used to argue that plotting a path through space in inter-stellar travel would be impossible."
+                    Real = true,
+                    Image = "https://repository-images.githubusercontent.com/242613363/efd43b9a-6bbc-481a-94a3-627bbc2f6ea4",
+                    Usernotes ="often used to argue that plotting a path through space in inter-stellar travel would be impossible."
                 });
 
             modelBuilder.Entity<AI>().HasData(
@@ -50,7 +52,7 @@ namespace SpaceProjectBackend.Data
                     Description = "A villain in the Alien series.",
                     Real = false,
                     CreatorId = null,
-                    Image = "img_url",
+                    Image = "https://vignette.wikia.nocookie.net/alienanthology/images/f/fa/David_8_profile.jpg",
                     Usernotes = "Religious symbolism",
                 });
 
@@ -59,7 +61,9 @@ namespace SpaceProjectBackend.Data
                     Id=Guid.NewGuid().ToString(),
                     Title="Childhood's End",
                     Description= "Childhood's End is a 1953 science fiction novel by the British author Arthur C. Clarke. The story follows the peaceful alien invasion[1] of Earth by the mysterious Overlords, whose arrival begins decades of apparent utopia under indirect alien rule, at the cost of human identity and culture.",
-                    AuthorId=g1,
+                    Real = false,
+                    Image = "https://upload.wikimedia.org/wikipedia/en/7/72/ChildhoodsEnd%281stEd%29.jpg",
+                    AuthorId =g1,
                     Usernotes="interesting concepts about aliens and human transcendence",
                 });
 
@@ -79,7 +83,8 @@ namespace SpaceProjectBackend.Data
                 new Person { Id = g1, 
                              Name = "Arthur C. Clarke", 
                              Image = "https://en.wikipedia.org/wiki/File:Arthur_C._Clarke_1965.jpg",
-                             Profile="English science fiction writer, co-wrote the screenplay for 1968 film 2001: A Space Odyssey. Quote: ´Any advanced extraterrestrial intelligence will be indistinguishable from nature.´ ",
+                             Real = true,
+                             Profile ="English science fiction writer, co-wrote the screenplay for 1968 film 2001: A Space Odyssey. Quote: ´Any advanced extraterrestrial intelligence will be indistinguishable from nature.´ ",
                 }
             );
         }

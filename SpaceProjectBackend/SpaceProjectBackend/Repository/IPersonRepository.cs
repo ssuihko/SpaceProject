@@ -10,8 +10,9 @@ namespace SpaceProjectBackend.Repository
         Task<Person?> GetPerson(string PersonId, PreloadPolicy preloadPolicy = PreloadPolicy.DoNotPreloadRelations);
 
         Task<Person?> CreatePerson(
-                 string name, 
-                string image,  
+                string name, 
+                string image,
+                bool real,
                 string profile);
 
         Task<Person?> DeletePerson(string PersonId, PreloadPolicy preloadPolicy = PreloadPolicy.DoNotPreloadRelations);
@@ -19,7 +20,8 @@ namespace SpaceProjectBackend.Repository
         Task<Person?> UpdatePerson(
                 string PersonId,  
                 string name, 
-                string image,  
+                string image,
+                bool real,
                 string profile);
 
         public void SaveChanges();

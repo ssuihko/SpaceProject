@@ -16,6 +16,10 @@ namespace SpaceProjectBackend.DTOs
 
         public string Description { get; set; }
 
+        public bool Real { get; set; }
+
+        public string Image { get; set; }
+
         public string? AuthorId { get; set; }
 
         public string Usernotes { get; set; }
@@ -25,6 +29,8 @@ namespace SpaceProjectBackend.DTOs
             Id = book.Id;
             Title = book.Title;
             Description = book.Description;
+            Real = book.Real;
+            Image = book.Image;
             AuthorId = book.AuthorId;
             Usernotes = book.Usernotes;
         }
@@ -100,6 +106,10 @@ namespace SpaceProjectBackend.DTOs
 
         public string Description { get; set; }
 
+        public bool Real { get; set; }
+
+        public string Image { get; set; }
+
         public string Usernotes { get; set; }
 
         public TheoryDTO(Theory theory)
@@ -107,6 +117,8 @@ namespace SpaceProjectBackend.DTOs
             Id = theory.Id;
             Name = theory.Name;
             Description = theory.Description;
+            Real = theory.Real;
+            Image = theory.Image;
             Usernotes = theory.Usernotes;
         }
 
@@ -121,6 +133,8 @@ namespace SpaceProjectBackend.DTOs
 
         public string Image { get; set; }
 
+        public bool Real { get; set; }
+
         public string Profile { get; set; }
 
         public List<BookDTO> Books { get; set; } = new List<BookDTO>();
@@ -134,6 +148,7 @@ namespace SpaceProjectBackend.DTOs
             Id = person.Id;
             Name = person.Name;
             Image = person.Image;
+            Real = person.Real;
             Profile = person.Profile;
 
 
@@ -164,6 +179,8 @@ namespace SpaceProjectBackend.DTOs
 
         public string Image { get; set; }
 
+        public bool Real { get; set; }
+
         public string Profile { get; set; }
 
         public string Usernotes { get; set; }
@@ -173,6 +190,7 @@ namespace SpaceProjectBackend.DTOs
             Id = person.Id;
             Name = person.Name;
             Image = person.Image;
+            Real = person.Real;
             Profile = person.Profile;
         }
 

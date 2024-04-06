@@ -47,18 +47,22 @@ namespace SpaceProjectBackend.Repository
 
         public async Task<Book?> CreateBook(
                 string title, 
-                string description,  
+                string description,
+                bool real,
+                string image,
                 string authorId,  
                 string usernotes)
         {
             var plr = _db.People.FirstOrDefault(x => x.Id == authorId);
    
-            if (title == "" || description == "" || usernotes == "" ) return null;
+            if (title == "" || description == "" || usernotes == "" || image == "") return null;
 
             var Book = new Book { 
                 Id = Guid.NewGuid().ToString(), 
                 Title = title, 
                 Description = description, 
+                Real = real,
+                Image = image,
                 AuthorId = authorId, 
                 Author = plr,  
                 Usernotes = usernotes };
@@ -70,7 +74,9 @@ namespace SpaceProjectBackend.Repository
         public async Task<Book?> UpdateBook( 
                 string bookId,  
                 string title, 
-                string description,  
+                string description,
+                bool real,
+                string image,
                 string authorId,  
                 string usernotes)
         {
@@ -81,9 +87,19 @@ namespace SpaceProjectBackend.Repository
                 return null;
             }
 
+            if (bk.Real != real) // booleans don't match
+            {
+                bk.Real = real;
+            }
+
             if (title != null || title != "") 
             { 
                 bk.Title = title; 
+            }
+
+            if (image != null || image != "")
+            {
+                bk.Image = image;
             }
 
             if (description != null || description != "") 

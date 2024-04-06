@@ -12,8 +12,12 @@ namespace SpaceProjectBackend.Models
         [Column("name")]
         public string Name { get; set; }
 
+        [Column("real")]
+        public bool Real { get; set; }
+
         [Column("image")]
         public string Image { get; set; }
+
 
         [Column("profile")]
         public string Profile { get; set; }

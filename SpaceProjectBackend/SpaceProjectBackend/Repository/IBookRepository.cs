@@ -11,7 +11,9 @@ namespace SpaceProjectBackend.Repository
 
         Task<Book?> CreateBook(
                 string title, 
-                string description,  
+                string description,
+                bool real,
+                string image,
                 string authorId,  
                 string usernotes);
 
@@ -20,7 +22,9 @@ namespace SpaceProjectBackend.Repository
         Task<Book?> UpdateBook(
                 string bookId,  
                 string title, 
-                string description,  
+                string description,
+                bool real,
+                string image,
                 string authorId,  
                 string usernotes);
 

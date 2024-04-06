@@ -11,7 +11,9 @@ namespace SpaceProjectBackend.Repository
 
         Task<Theory?> CreateTheory(
                 string name, 
-                string description,    
+                string description,
+                bool real,
+                string image,
                 string usernotes);
 
         Task<Theory?> DeleteTheory(string TheoryId, PreloadPolicy preloadPolicy = PreloadPolicy.DoNotPreloadRelations);
@@ -19,7 +21,9 @@ namespace SpaceProjectBackend.Repository
         Task<Theory?> UpdateTheory(
                 string TheoryId,  
                 string name, 
-                string description,    
+                string description,
+                bool real,
+                string image,
                 string usernotes);
 
         public void SaveChanges();

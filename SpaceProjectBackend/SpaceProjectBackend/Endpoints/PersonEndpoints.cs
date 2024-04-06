@@ -49,7 +49,7 @@ namespace SpaceProjectBackend.Endpoints
                 return Results.BadRequest("Non-null fields are required");
             }
 
-            Person? Person = await PersonRepository.CreatePerson(payload.Name, payload.Image, payload.Profile);
+            Person? Person = await PersonRepository.CreatePerson(payload.Name, payload.Image, payload.Real, payload.Profile);
 
             if (Person == null)
             {
@@ -109,8 +109,15 @@ namespace SpaceProjectBackend.Endpoints
 
             string newProfile = (payload.Profile.Length > 0) ? payload.Profile : ogPerson.Profile;
 
+            bool newReal = ogPerson.Real;
 
-            Person? Person = await repository.UpdatePerson(ogPerson.Id, newName, newImage, newProfile);
+            if (payload.Real != null && newReal != payload.Real)
+            {
+                newReal = (bool)payload.Real;
+            }
+
+
+            Person? Person = await repository.UpdatePerson(ogPerson.Id, newName, newImage, newReal, newProfile);
 
             if (Person == null)
             {

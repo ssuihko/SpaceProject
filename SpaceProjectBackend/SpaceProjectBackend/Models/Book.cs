@@ -13,9 +13,15 @@ namespace SpaceProjectBackend.Models
         [Column("title")]
         public string Title { get; set; }
 
+        [Column("real")]
+        public bool Real { get; set; }
+
 
         [Column("description")]
         public string Description { get; set; }
+
+        [Column("image")]
+        public string Image { get; set; }
 
 
         [Column("author_id")]
