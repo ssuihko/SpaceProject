@@ -127,7 +127,10 @@ namespace SpaceProjectBackend.Endpoints
                 newReal = !ogAI.Real;
             }
 
-            string newCreatorId = (payload.CreatorId.Length > 0) ? payload.CreatorId : ogAI.CreatorId;
+            string newCreatorId = null;
+            if (payload.CreatorId != null) {
+                newCreatorId = (payload.CreatorId.Length > 0) ? payload.CreatorId : ogAI.CreatorId;
+            }
 
             string newImage = (payload.Image.Length > 0) ? payload.Image : ogAI.Image;
 
