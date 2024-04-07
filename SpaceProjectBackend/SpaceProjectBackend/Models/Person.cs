@@ -19,8 +19,8 @@ namespace SpaceProjectBackend.Models
         public string Image { get; set; }
 
 
-        [Column("profile")]
-        public string Profile { get; set; }
+        [Column("description")]
+        public string Description { get; set; }
 
         public ICollection<Book> Books { get; set; } = new List<Book>();
         public ICollection<AI> AIs { get; set; } = new List<AI>();

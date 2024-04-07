@@ -41,17 +41,17 @@ namespace SpaceProjectBackend.Endpoints
                 return Results.Unauthorized();
             }
             
-            if (payload.Title == "" || payload.Description == "" || payload.Usernotes == "" || payload.Image == "")
+            if (payload.Name == "" || payload.Description == "" || payload.Usernotes == "" || payload.Image == "")
             {
                 return Results.BadRequest("Non-empty fields are required");
             }
 
-            if (payload.Title == null || payload.Usernotes == null || payload.Description == null || payload.Image == null || payload.Real == null)
+            if (payload.Name == null || payload.Usernotes == null || payload.Description == null || payload.Image == null || payload.Real == null)
             {
                 return Results.BadRequest("Non-null fields are required");
             }
 
-            Book? Book = await bookRepository.CreateBook(payload.Title, payload.Description, payload.Real, payload.Image, payload.AuthorId, payload.Usernotes);
+            Book? Book = await bookRepository.CreateBook(payload.Name, payload.Description, payload.Real, payload.Image, payload.CreatorId, payload.Usernotes);
 
             if (Book == null)
             {
@@ -92,7 +92,7 @@ namespace SpaceProjectBackend.Endpoints
         public static async Task<IResult> UpdateBook(string bookId, BookUpdatePayload payload, IBookRepository repository, ClaimsPrincipal user)
         {
 
-            if (payload.Title == null || payload.AuthorId == null || payload.Usernotes == null || payload.Description == null)
+            if (payload.Name == null || payload.CreatorId == null || payload.Usernotes == null || payload.Description == null)
             {
                 return Results.BadRequest("Non-null fields are required");
             }
@@ -105,7 +105,7 @@ namespace SpaceProjectBackend.Endpoints
                 return Results.BadRequest("Book not found");
             }
 
-            string newTitle = (payload.Title.Length > 0) ? payload.Title : ogBook.Title;
+            string newTitle = (payload.Name.Length > 0) ? payload.Name : ogBook.Name;
 
             string newDescription = (payload.Description.Length > 0) ? payload.Description : ogBook.Description;
 
@@ -116,14 +116,14 @@ namespace SpaceProjectBackend.Endpoints
                 newReal = (bool)payload.Real;
             }
 
-            string newAuthorId = (payload.AuthorId.Length > 0) ? payload.AuthorId : ogBook.AuthorId;
+            string newCreatorId = (payload.CreatorId.Length > 0) ? payload.CreatorId : ogBook.CreatorId;
 
             string newUsernotes = (payload.Usernotes.Length > 0) ? payload.Usernotes : ogBook.Usernotes;
 
             string newImage = (payload.Image.Length > 0) ? payload.Image : ogBook.Image;
 
 
-            Book? Book = await repository.UpdateBook(ogBook.Id, newTitle, newDescription, newReal, newImage, newAuthorId, newUsernotes);
+            Book? Book = await repository.UpdateBook(ogBook.Id, newTitle, newDescription, newReal, newImage, newCreatorId, newUsernotes);
 
             if (Book == null)
             {

@@ -12,7 +12,7 @@ namespace SpaceProjectBackend.DTOs
 
         public string Id { get; set; }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         public string Description { get; set; }
 
@@ -20,18 +20,18 @@ namespace SpaceProjectBackend.DTOs
 
         public string Image { get; set; }
 
-        public string? AuthorId { get; set; }
+        public string? CreatorId { get; set; }
 
         public string Usernotes { get; set; }
 
         public BookDTO(Book book)
         {
             Id = book.Id;
-            Title = book.Title;
+            Name = book.Name;
             Description = book.Description;
             Real = book.Real;
             Image = book.Image;
-            AuthorId = book.AuthorId;
+            CreatorId = book.CreatorId;
             Usernotes = book.Usernotes;
         }
 
@@ -135,7 +135,7 @@ namespace SpaceProjectBackend.DTOs
 
         public bool Real { get; set; }
 
-        public string Profile { get; set; }
+        public string Description { get; set; }
 
         public List<BookDTO> Books { get; set; } = new List<BookDTO>();
 
@@ -149,7 +149,7 @@ namespace SpaceProjectBackend.DTOs
             Name = person.Name;
             Image = person.Image;
             Real = person.Real;
-            Profile = person.Profile;
+            Description = person.Description;
 
 
             foreach(Book bk in person.Books)
@@ -181,7 +181,7 @@ namespace SpaceProjectBackend.DTOs
 
         public bool Real { get; set; }
 
-        public string Profile { get; set; }
+        public string Description { get; set; }
 
         public string Usernotes { get; set; }
 
@@ -191,7 +191,7 @@ namespace SpaceProjectBackend.DTOs
             Name = person.Name;
             Image = person.Image;
             Real = person.Real;
-            Profile = person.Profile;
+            Description = person.Description;
         }
 
     }

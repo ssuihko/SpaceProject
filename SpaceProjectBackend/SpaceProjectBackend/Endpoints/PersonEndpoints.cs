@@ -39,17 +39,17 @@ namespace SpaceProjectBackend.Endpoints
                 return Results.Unauthorized();
             }
             
-            if (payload.Name== "" || payload.Image == "" || payload.Profile == "")
+            if (payload.Name== "" || payload.Image == "" || payload.Description == "")
             {
                 return Results.BadRequest("Non-empty fields are required");
             }
 
-            if (payload.Name== null || payload.Profile == null || payload.Image == null )
+            if (payload.Name== null || payload.Description == null || payload.Image == null )
             {
                 return Results.BadRequest("Non-null fields are required");
             }
 
-            Person? Person = await PersonRepository.CreatePerson(payload.Name, payload.Image, payload.Real, payload.Profile);
+            Person? Person = await PersonRepository.CreatePerson(payload.Name, payload.Image, payload.Real, payload.Description);
 
             if (Person == null)
             {
@@ -90,7 +90,7 @@ namespace SpaceProjectBackend.Endpoints
         public static async Task<IResult> UpdatePerson(string PersonId, PersonUpdatePayload payload, IPersonRepository repository, ClaimsPrincipal user)
         {
 
-            if (payload.Name== null || payload.Profile == null || payload.Image == null)
+            if (payload.Name== null || payload.Description == null || payload.Image == null)
             {
                 return Results.BadRequest("Non-null fields are required");
             }
@@ -107,7 +107,7 @@ namespace SpaceProjectBackend.Endpoints
 
             string newImage = (payload.Image.Length > 0) ? payload.Image : ogPerson.Image;
 
-            string newProfile = (payload.Profile.Length > 0) ? payload.Profile : ogPerson.Profile;
+            string newProfile = (payload.Description.Length > 0) ? payload.Description : ogPerson.Description;
 
             bool newReal = ogPerson.Real;
 

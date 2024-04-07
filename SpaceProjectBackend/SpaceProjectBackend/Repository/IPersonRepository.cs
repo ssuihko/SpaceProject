@@ -13,7 +13,7 @@ namespace SpaceProjectBackend.Repository
                 string name, 
                 string image,
                 bool real,
-                string profile);
+                string description);
 
         Task<Person?> DeletePerson(string PersonId, PreloadPolicy preloadPolicy = PreloadPolicy.DoNotPreloadRelations);
 
@@ -22,7 +22,7 @@ namespace SpaceProjectBackend.Repository
                 string name, 
                 string image,
                 bool real,
-                string profile);
+                string description);
 
         public void SaveChanges();
     }

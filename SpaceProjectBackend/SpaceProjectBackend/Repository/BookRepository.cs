@@ -46,25 +46,25 @@ namespace SpaceProjectBackend.Repository
         }
 
         public async Task<Book?> CreateBook(
-                string title, 
+                string name, 
                 string description,
                 bool real,
                 string image,
-                string authorId,  
+                string creatorId,  
                 string usernotes)
         {
-            var plr = _db.People.FirstOrDefault(x => x.Id == authorId);
+            var plr = _db.People.FirstOrDefault(x => x.Id == creatorId);
    
-            if (title == "" || description == "" || usernotes == "" || image == "") return null;
+            if (name == "" || description == "" || usernotes == "" || image == "") return null;
 
             var Book = new Book { 
                 Id = Guid.NewGuid().ToString(), 
-                Title = title, 
+                Name = name, 
                 Description = description, 
                 Real = real,
                 Image = image,
-                AuthorId = authorId, 
-                Author = plr,  
+                CreatorId = creatorId, 
+                Creator = plr,  
                 Usernotes = usernotes };
 
             await _db.Books.AddAsync(Book);
@@ -73,11 +73,11 @@ namespace SpaceProjectBackend.Repository
 
         public async Task<Book?> UpdateBook( 
                 string bookId,  
-                string title, 
+                string name, 
                 string description,
                 bool real,
                 string image,
-                string authorId,  
+                string creatorId,  
                 string usernotes)
         {
             var bk = await _db.Books.FirstOrDefaultAsync(s => s.Id ==bookId);
@@ -92,9 +92,9 @@ namespace SpaceProjectBackend.Repository
                 bk.Real = real;
             }
 
-            if (title != null || title != "") 
+            if (name != null || name != "") 
             { 
-                bk.Title = title; 
+                bk.Name = name; 
             }
 
             if (image != null || image != "")
@@ -107,11 +107,11 @@ namespace SpaceProjectBackend.Repository
                 bk.Description = description; 
             }
 
-            if (authorId != null || authorId != "") 
+            if (creatorId != null || creatorId != "") 
             { 
-                var auth = await _db.People.FirstOrDefaultAsync(s => s.Id == authorId);
-                bk.AuthorId = authorId;
-                bk.Author = auth; 
+                var auth = await _db.People.FirstOrDefaultAsync(s => s.Id == creatorId);
+                bk.CreatorId = creatorId;
+                bk.Creator = auth; 
             }
 
             if (usernotes != null || usernotes != "") 

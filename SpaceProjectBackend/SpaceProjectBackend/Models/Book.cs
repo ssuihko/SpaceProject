@@ -10,8 +10,8 @@ namespace SpaceProjectBackend.Models
         public string Id { get; set; }
 
 
-        [Column("title")]
-        public string Title { get; set; }
+        [Column("name")]
+        public string Name { get; set; }
 
         [Column("real")]
         public bool Real { get; set; }
@@ -24,9 +24,9 @@ namespace SpaceProjectBackend.Models
         public string Image { get; set; }
 
 
-        [Column("author_id")]
-        public string? AuthorId { get; set; }
-        public Person? Author { get; set; }
+        [Column("creator_id")]
+        public string? CreatorId { get; set; }
+        public Person? Creator { get; set; }
 
 
         [Column("usernotes")]

@@ -2,33 +2,33 @@
 
 namespace SpaceProjectBackend.DTOs
 {
-    public record BookUpdatePayload(string? Title, string? Description, bool? Real, string? Image, string? AuthorId, string? Usernotes);
+    public record BookUpdatePayload(string? Name, string? Description, bool? Real, string? Image, string? CreatorId, string? Usernotes);
 
 
     public record BookPostPayload
     {
-        public string Title { get; init; }
+        public string Name { get; init; }
         public string Description { get; init; }
 
         public bool Real { get; set; }
 
         public string Image { get; set; }
-        public string AuthorId { get; init; }
+        public string CreatorId { get; init; }
         public string Usernotes { get; init; }
-        public BookPostPayload(string title, string description, bool real, string image, string authorId, string usernotes)
+        public BookPostPayload(string name, string description, bool real, string image, string creatorId, string usernotes)
         {
-            Title = title;
+            Name = name;
             Description = description;
             Real = real;
             Image = image;
-            AuthorId = authorId;
+            CreatorId = creatorId;
             Usernotes = usernotes;
         }
 
     }
 
     // People
-    public record PersonUpdatePayload(string? Name, string? Image, bool? Real, string? Profile);
+    public record PersonUpdatePayload(string? Name, string? Image, bool? Real, string? Description);
 
     public record PersonPostPayload
     {
@@ -36,13 +36,13 @@ namespace SpaceProjectBackend.DTOs
         public string Image { get; init; }
 
         public bool Real { get; set; }
-        public string Profile { get; init; }
-        public PersonPostPayload(string name, string image, bool real, string profile)
+        public string Description { get; init; }
+        public PersonPostPayload(string name, string image, bool real, string description)
         {
             Name = name;
             Image = image;
             Real = real;
-            Profile = profile;
+            Description = description;
         }
 
     }

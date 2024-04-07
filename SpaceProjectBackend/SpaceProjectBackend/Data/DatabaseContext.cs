@@ -59,11 +59,11 @@ namespace SpaceProjectBackend.Data
             modelBuilder.Entity<Book>().HasData(
                 new Book  {
                     Id=Guid.NewGuid().ToString(),
-                    Title="Childhood's End",
+                    Name="Childhood's End",
                     Description= "Childhood's End is a 1953 science fiction novel by the British author Arthur C. Clarke. The story follows the peaceful alien invasion[1] of Earth by the mysterious Overlords, whose arrival begins decades of apparent utopia under indirect alien rule, at the cost of human identity and culture.",
                     Real = false,
                     Image = "https://upload.wikimedia.org/wikipedia/en/7/72/ChildhoodsEnd%281stEd%29.jpg",
-                    AuthorId =g1,
+                    CreatorId =g1,
                     Usernotes="interesting concepts about aliens and human transcendence",
                 });
 
@@ -84,7 +84,7 @@ namespace SpaceProjectBackend.Data
                              Name = "Arthur C. Clarke", 
                              Image = "https://en.wikipedia.org/wiki/File:Arthur_C._Clarke_1965.jpg",
                              Real = true,
-                             Profile ="English science fiction writer, co-wrote the screenplay for 1968 film 2001: A Space Odyssey. Quote: ´Any advanced extraterrestrial intelligence will be indistinguishable from nature.´ ",
+                             Description ="English science fiction writer, co-wrote the screenplay for 1968 film 2001: A Space Odyssey. Quote: ´Any advanced extraterrestrial intelligence will be indistinguishable from nature.´ ",
                 }
             );
         }

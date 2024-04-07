@@ -50,17 +50,17 @@ namespace SpaceProjectBackend.Repository
                 string name,
                 string image,
                 bool real,
-                string profile)
+                string description)
         {
 
-            if (name == "" || image == "" || profile == "") return null;
+            if (name == "" || image == "" || description == "") return null;
 
             var Person = new Person { 
                 Id = Guid.NewGuid().ToString(), 
                 Name = name, 
                 Image = image, 
                 Real = real,
-                Profile = profile };
+                Description = description };
 
             await _db.People.AddAsync(Person);
             return Person;
@@ -71,7 +71,7 @@ namespace SpaceProjectBackend.Repository
                 string name,
                 string image,
                 bool real,
-                string profile)
+                string description)
         {
             var prs = await _db.People.FirstOrDefaultAsync(s => s.Id ==PersonId);
 
@@ -95,9 +95,9 @@ namespace SpaceProjectBackend.Repository
                 prs.Image = image; 
             }
 
-            if (profile != null || profile != "") 
+            if (description != null || description != "") 
             { 
-                prs.Profile = profile; 
+                prs.Description = description; 
             }
 
             return prs;

@@ -10,22 +10,22 @@ namespace SpaceProjectBackend.Repository
         Task<Book?> GetBook(string BookId, PreloadPolicy preloadPolicy = PreloadPolicy.DoNotPreloadRelations);
 
         Task<Book?> CreateBook(
-                string title, 
+                string name, 
                 string description,
                 bool real,
                 string image,
-                string authorId,  
+                string creatorId,  
                 string usernotes);
 
         Task<Book?> DeleteBook(string BookId, PreloadPolicy preloadPolicy = PreloadPolicy.DoNotPreloadRelations);
 
         Task<Book?> UpdateBook(
                 string bookId,  
-                string title, 
+                string name, 
                 string description,
                 bool real,
                 string image,
-                string authorId,  
+                string creatorId,  
                 string usernotes);
 
         public void SaveChanges();
