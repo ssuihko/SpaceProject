@@ -141,6 +141,6 @@ app.ConfigureAIEndpoints();
 app.ConfigureBookEndpoints();
 app.ConfigureAuthEndpoints();
 
-app.ApplyProjectMigrations();
+//app.ApplyProjectMigrations();
 
 app.Run();
